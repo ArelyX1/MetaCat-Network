@@ -7,6 +7,7 @@
   margin: auto; /* centro horizontal si el padre tiene display block y ancho definido */
   top: 50%;
   left: 50%;
+  z-index: 50;
   transform: translate(-50%, -50%);
   position: absolute; /* o fixed según contexto */
 }
@@ -23,6 +24,7 @@
     translateX(calc(var(--direction) * -5rem));
   filter: blur(calc(var(--abs-offset) * 1rem));
   transition: all 0.3s ease-out;
+  overflow-y: hidden;
 }
 
 

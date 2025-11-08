@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { TiChevronLeftOutline, TiChevronRightOutline } from "react-icons/ti";
 import '../styles/carouselStyle.css';
 
@@ -18,6 +18,9 @@ type EventsCarouselProps = {
 
 export const EventsCarousel: React.FC<EventsCarouselProps> = ({ children }) => {
   const [current, setCurrent] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const touchStart = useRef(0);
+  const touchEnd = useRef(0);
 
   const totalChildren = React.Children.count(children);
 
@@ -33,8 +36,34 @@ export const EventsCarousel: React.FC<EventsCarouselProps> = ({ children }) => {
     }
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStart.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    touchEnd.current = e.changedTouches[0].clientX;
+    handleSwipe();
+  };
+
+  const handleSwipe = () => {
+    const distance = touchStart.current - touchEnd.current;
+    const isLeftSwipe = distance > 50; // umbral de 50px
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      onClickRight(); // swipe izquierda = siguiente
+    } else if (isRightSwipe) {
+      onClickLeft(); // swipe derecha = anterior
+    }
+  };
+
   return (
-    <div className="event-carousel">
+    <div 
+      ref={carouselRef}
+      className="event-carousel"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       {current > 0 && (
         <button className="nav left" onClick={onClickLeft}>
           <TiChevronLeftOutline />
