@@ -15,7 +15,7 @@ export function TetoCorner() {
       <TetoPear path="src/assets/3dModels/teto_pear.glb" />
       <OrbitControls 
         autoRotate 
-        autoRotateSpeed={2}
+        autoRotateSpeed={-2}
         enableZoom={false}
         enablePan={false}
         enableRotate={false}
@@ -97,4 +97,27 @@ export function TetoCorner() {
     </Canvas>
   );
 }
+
+
+function promedio (nt[3], np[3], crT, crP = 0){
+
+    nProm = 0
+    for i < 4 {
+      nt[i] (nt[i] == nsp ) ? 0 : nt[i]
+      np[i] (np[i] == nsp ) ? 0 : np[i]
+      nHelp = nt[i] * crT + np[i] * crP
+      nProm += nHelp / crT+crP
+    }
+    nProm /= len(nt)
+
+}
+
+function prom(n[3], np[3], crd){
+  if n.count(nsp) > 2:
+    return nsp
+  else:
+    n.forEach(){n[i]*crd}
+}
+
+
 */

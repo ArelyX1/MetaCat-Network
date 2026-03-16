@@ -1,7 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useState, useRef } from "react";
 import { TiChevronLeftOutline, TiChevronRightOutline } from "react-icons/ti";
 import '../styles/carouselStyle.css';
-
 
 export interface EventProps {
   title: string;
@@ -47,13 +46,13 @@ export const EventsCarousel: React.FC<EventsCarouselProps> = ({ children }) => {
 
   const handleSwipe = () => {
     const distance = touchStart.current - touchEnd.current;
-    const isLeftSwipe = distance > 50; // umbral de 50px
-    const isRightSwipe = distance < -50;
+    const isLeftSwipe = distance > 50; // umbral de 50 px hacia la izquierda
+    const isRightSwipe = distance < -50; // umbral de 50 px hacia la derecha
 
     if (isLeftSwipe) {
-      onClickRight(); // swipe izquierda = siguiente
+      onClickRight(); // swipe hacia izquierda mueve adelante
     } else if (isRightSwipe) {
-      onClickLeft(); // swipe derecha = anterior
+      onClickLeft(); // swipe hacia derecha mueve atrás
     }
   };
 
@@ -71,6 +70,7 @@ export const EventsCarousel: React.FC<EventsCarouselProps> = ({ children }) => {
       )}
       {React.Children.map(children, (child, i) => (
         <div
+          key={i}
           className="card-container"
           style={{
             "--active": i === current ? 1 : 0,

@@ -1,0 +1,20 @@
+{
+  "name": "metacat-network",
+  "version": "1.0.0",
+  "description": "Red de alumnos",
+  "homepage": "https://github.com/ArelyX1/MetaCat-Network#readme",
+  "bugs": {
+    "url": "https://github.com/ArelyX1/MetaCat-Network/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArelyX1/MetaCat-Network.git"
+  },
+  "license": "ISC",
+  "author": "ArelyXl",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
